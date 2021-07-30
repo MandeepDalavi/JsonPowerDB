@@ -46,7 +46,7 @@ JavaScript Object Notation (JSON) is having explosive fastest growing trend in r
 |--|--|--|--|--|--|--|
 | Document DB | ✔️ | ❌ | ❌ | ❌ | ❌ | ✔️ |
 | Key-Value DB | ❌ | ❌ | ✔️ | ❌ | ❌ | ✔️ |
-| RDBMS |  | ✔️ | ❌ | ❌ | ❌ | ✔️* |
+| RDBMS | ❌ | ✔️ | ❌ | ❌ | ❌ | ✔️* |
 | GeoSpatial | ❌ | ❌ | ✔️ | ❌ | ❌ | ✔️ |
 | Time Series DB | ❌ | ❌ | ❌ | ❌ | ✔️ | ✔️ |
 | Wide Column Stores | ❌ | ❌ | ❌ | ✔️ | ❌ | ✔️* |

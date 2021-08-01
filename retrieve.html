@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="img/favicon/site.webmanifest">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- main css -->
+    <link rel="stylesheet" type="text/css" href="css/command.css">
+    <title>Retrieve</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md nav-bar fixed-top nav_bar" id="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <span class="navbar-brand menu">
+                    <span><a href="index.html"><b>JsonPowerDB Demo</b></a></span>
+                </span>
+                <ul id="List">
+                    <li><a href="index.html"><b>Home<b></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container" id="login">
+        <!-- <p class="login-text">Login with Social Account</p>
+        <div class="login-social">
+            <a href="#" class="facebook"><i class="fa fa-facebook"></i>Facebook</a>
+            <a href="#" class="twitter"><i class="fa fa-twitter"></i>Twitter</a>
+            <a href="#" class="google-plus"><i class="fa fa-google-plus"></i>Google+</a>
+            <a href="#" class="linkedin"><i class="fa fa-linkedin"></i>Linkedin</a>
+        </div> -->
+        <form method="POST" autocomplete="off" class="login-email">
+            <p class="login-text">Get Operation</p>
+            <div class="input-group">
+                <input type="number" placeholder="Roll Number" name="roll" id="roll" pattern="[0-9]" minlength="1" maxlength="3" autocomplete="off" required>
+            </div>
+            <div class="input-group">
+                <input type="button" class="btn" name="submit" id="submit" value="Retrieve" onclick="getData();">
+            </div>
+            <div class="response">
+                <p class="response-text" id="response-text"></p>
+            </div>
+        </form>
+    </div>
+
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <!-- Common JsonPowerDB JS -->
+    <script src="http://login2explore.com/jpdb/resources/js/0.0.3/jpdb-commons.js"></script>
+    <script>
+        $("#roll").focus();
+        function validateAndGetFormData() {
+            var RollVar = document.getElementById("roll").value;
+            var jsonStrObj = {
+                "roll" : RollVar
+            };
+            return JSON.stringify(jsonStrObj);
+        }
+
+        function resetForm() {
+            $("#roll").val("");
+            $("#roll").focus();
+        }
+
+        function getData() {
+            var jsonStr = validateAndGetFormData();
+            if (jsonStr === "") {
+                return;
+            }
+            var getReqStr = createGETRequest("90936293|-31948845453265276|90945447", "StudentDB", "student", jsonStr);
+            // alert(getReqStr);
+            jQuery.ajaxSetup({ async: false });
+            var resultObj = executeCommandAtGivenBaseUrl(getReqStr, "http://api.login2explore.com:5577", "/api/irl");
+            // alert(JSON.stringify(resultObj));
+            jQuery.ajaxSetup({ async: true });
+
+            var data = JSON.stringify(resultObj);
+            var res = data.split('\\"');
+            // alert(res);
+            var responseDiv = document.getElementById("response-text");
+            responseDiv.innerHTML = "Roll No. : " + res[3] + "<br>Name : " + res[7] + "\n" + "<br>Email : " + res[15] + "\n" + "<br>Mobile : " + res[11].replace(/[:,]/g,"");
+
+            resetForm();
+        }
+    </script>
+
+</body>
+</html>

@@ -210,3 +210,9 @@ JavaScript Object Notation (JSON) is having explosive fastest growing trend in r
 - Demo
 ![Demo of Insert Command](/images/gif/remove.gif)
 
+
+## JsonPowerDB in Web Pages
+
+<embed src="/assets/JsonPowerDB.pdf">
+	<p>This platform does not support PDFs. Please download the PDF to view it: <a href="/assets/JsonPowerDB.pdf">Download PDF</a>.</p>
+</embed>

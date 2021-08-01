@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="img/favicon/site.webmanifest">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- main css -->
+    <link rel="stylesheet" type="text/css" href="css/command.css">
+    <title>Update</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md nav-bar fixed-top nav_bar" id="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <span class="navbar-brand menu">
+                    <span><a href="index.html"><b>JsonPowerDB Demo</b></a></span>
+                </span>
+                <ul id="List">
+                    <li><a href="index.html"><b>Home<b></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container" id="login">
+        <form method="POST" autocomplete="off" class="login-email">
+            <p class="login-text">Update Operation</p>
+            <div class="input-group">
+                <input type="number" placeholder="Roll Number" name="roll" id="roll" pattern="[0-9]" minlength="1" maxlength="3" autocomplete="off" required>
+            </div>
+            <div class="input-group">
+                <input type="button" class="btn" name="getBtn" id="getBtn" value="Show Data" onclick="getData();">
+            </div>
+            <div class="response">
+                <p class="response-text" id="response-text"></p>
+            </div>
+            <p id="para" style="display:none;">You may update your Mobile Number!</p>
+            <div class="input-group" id="mobile" style="display:none;">
+                <input type="number" placeholder="Mobile" name="mobile" id="mobile" pattern="[0-9]{10}" autocomplete="off" required>
+            </div>
+            <div class="input-group" id="updateBtn" style="display:none;">
+                <input type="button" class="btn" name="submit" id="submit" value="Update" onclick="updateData();">
+            </div>
+        </form>
+    </div>
+
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <!-- Common JsonPowerDB JS -->
+    <script src="http://login2explore.com/jpdb/resources/js/0.0.3/jpdb-commons.js"></script>
+    <script>
+        $("#roll").focus();
+        var RollVar;
+        function validateAndGetFormData() {
+            RollVar = document.getElementById("roll").value;
+            var jsonStrObj = {
+                "roll" : RollVar
+            };
+            return JSON.stringify(jsonStrObj);
+        }
+
+        function validateAndUpdateFormData() {
+            var MobVar = document.getElementById("mobile").value;
+            var jsonStrObj1 = {
+                mobile : MobVar
+            };
+            return JSON.stringify(jsonStrObj1);
+        }
+
+        function resetForm() {
+            $("#roll").val("");
+            $("#mobile").val("");
+            $("#roll").focus();
+        }
+
+        function getData() {
+            var jsonStr = validateAndGetFormData();
+            if (jsonStr === "") {
+                return;
+            }
+            var getReqStr = createGETRequest("90936293|-31948845453265276|90945447", "StudentDB", "student", jsonStr);
+            jQuery.ajaxSetup({ async: false });
+            var resultObj = executeCommandAtGivenBaseUrl(getReqStr, "http://api.login2explore.com:5577", "/api/irl");
+            alert(JSON.stringify(resultObj));
+            jQuery.ajaxSetup({ async: true });
+
+            var data = JSON.stringify(resultObj);
+            var res = data.split('\\"');
+            var responseDiv = document.getElementById("response-text");
+            responseDiv.innerHTML = "Roll No. : " + res[3] + "<br>Name : " + res[7] + "\n" + "<br>Email : " + res[15] + "\n" + "<br>Mobile : " + res[11].replace(/[:,]/g,"");
+
+            document.getElementById("response-text").style.display = "block";
+            document.getElementById("para").style.display = "block";
+            document.getElementById("mobile").style.display = "block";
+            document.getElementById("updateBtn").style.display = "block";
+        }
+
+        function updateData() {
+            var jsonStr1 = validateAndUpdateFormData();
+            if (jsonStr1 === "") {
+                return;
+            }
+            var putReqStr = createUPDATERecordRequest("90936293|-31948845453265276|90945447", jsonStr1, "StudentDB", "student", RollVar);
+            jQuery.ajaxSetup({ async: false });
+            alert("Data Updated!");
+            var resultObj = executeCommandAtGivenBaseUrl(putReqStr, "http://api.login2explore.com:5577", "/api/iml");
+            jQuery.ajaxSetup({ async: true });
+            resetForm();
+            document.getElementById("response-text").style.display = "none";
+            document.getElementById("para").style.display = "none";
+            document.getElementById("mobile").style.display = "none";
+            document.getElementById("updateBtn").style.display = "none";
+        }
+    </script>
+
+</body>
+</html>

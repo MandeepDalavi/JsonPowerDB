@@ -191,5 +191,5 @@ JsonPowerDB is a Real-time, High Performance, Lightweight and Simple to Use, Res
 - In addition, if anyone wants to contribute in this repo, then create a **PR (Pull Request)**. I will be happy to add more into it. Thanks.!
 
 ## If you want to know more please visit following links
-JsonPowerDB Intro Notes: <https://github.com/MandeepDalavi/JasonPowerDB>
-JsonPowerDB Website: <https://login2explore.com/jpdb/index.html>
+- JsonPowerDB Intro Notes: <https://github.com/MandeepDalavi/JasonPowerDB>
+- JsonPowerDB Website: <https://login2explore.com/jpdb/index.html>

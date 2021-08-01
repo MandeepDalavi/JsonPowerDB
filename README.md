@@ -1,34 +1,9 @@
-# Introduction to JsonPowerDB!
+# Demo Project for JsonPowerDB!
 
-## Developer Account and Token Generation
+> #### This project performs all the basic *CRUD* operation on JsonPowerDB
 
-### Steps for creating Developer Account
-- visit the **JsonPowerDB login page**
-	> [JsonPowerDB Login Page (login2explore.com)](http://api.login2explore.com:5577)
-
-- Register  yourself by clicking on the **Register** button
-- After registering, you'll get your credentials in your email
-- That's it, your Developer Account has been created
-
-### Steps to Generate Token
-- Simply go to the above mentioned website and **Login**
-- After which you'll see a dashboard like this
-![Dashboard](/images/dashboard.jpg)
-- Click on the **Tools** tab 
-- Under **Token** tab you'll find Generate Connection Token button. So, simply click on it.
-- Now you are all set to use JsonPowerDB.
-
-## Now you need an API Tester
-
-In order to practice some basic commands we are going to install a Chrome Extension **Talend API Tester**
-> [Talend API Tester - Chrome Web Store](https://chrome.google.com/webstore/detail/talend-api-tester-free-ed/aejoelaoggembcahagimdiliamlcdmfm)
-
-## As we're all set, let's learn a bit about JsonPowerDB
-You might have got a thought about Why JSON?
-### JSON Data
-JavaScript Object Notation (JSON) is having explosive fastest growing trend in recent years and is slowly becoming the de-facto standard for data and communications.
-
-![Graph showing Json trend](https://bs-uploads.toptal.io/blackfish-uploads/uploaded_file/file/27628/image-1563384480428-bfcd0ae9014dc18d2bd6da1e9ec4fed2.png)
+## About JsonPowerDB
+JsonPowerDB is a Real-time, High Performance, Lightweight and Simple to Use, Rest API based Multi-mode DBMS. JsonPowerDB has ready to use API for Json document DB, RDBMS, Key-value DB, GeoSpatial DB and Time Series DB functionality. JPDB supports and advocates for true serverless and pluggable API development.
 
 ### Some Features of JsonPowerDB
 - Nimble, Simple to use, In Memory, Real-Time
@@ -107,7 +82,7 @@ JavaScript Object Notation (JSON) is having explosive fastest growing trend in r
 	}
 	```
 - Demo
-![Demo of Insert Command](/images/gif/insert.gif)
+![Demo of Insert Command](/images/screenshots/insert.gif)
 
 
 ### Retrieve Single Record
@@ -140,7 +115,7 @@ JavaScript Object Notation (JSON) is having explosive fastest growing trend in r
 	}
 	```
 - Demo
-![Demo of Insert Command](/images/gif/retrieve.gif)
+![Demo of Insert Command](/images/screenshots/retrieve.gif)
 
 
 ### Update Single Record
@@ -179,7 +154,7 @@ JavaScript Object Notation (JSON) is having explosive fastest growing trend in r
 	}
 	```
 - Demo
-![Demo of Insert Command](/images/gif/update.gif)
+![Demo of Insert Command](/images/screenshots/update.gif)
 
 
 ### Remove Single Record
@@ -208,11 +183,13 @@ JavaScript Object Notation (JSON) is having explosive fastest growing trend in r
 	}
 	```
 - Demo
-![Demo of Insert Command](/images/gif/remove.gif)
+![Demo of Insert Command](/images/screenshots/remove.gif)
 
 
-## JsonPowerDB in Web Pages
+## Project Status: Under Development
+- I'll be adding some more operations to it
+- In addition, if anyone wants to contribute in this repo, then create a **PR (Pull Request)**. I will be happy to add more into it. Thanks.!
 
-<embed src="/assets/JsonPowerDB.pdf">
-	<p>This platform does not support PDFs. Please download the PDF to view it: <a href="/assets/JsonPowerDB.pdf">Download PDF</a>.</p>
-</embed>
+## If you want to know more please visit following links
+JsonPowerDB Intro Notes: <https://github.com/MandeepDalavi/JasonPowerDB>
+JsonPowerDB Website: <https://login2explore.com/jpdb/index.html>
